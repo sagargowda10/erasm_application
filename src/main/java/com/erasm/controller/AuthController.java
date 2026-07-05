@@ -54,5 +54,11 @@ public class AuthController {
         String token = jwtUtil.generateToken(request.getEmail());
 
         return new ResponseEntity<>(token, HttpStatus.OK);
+        
+    }
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout() {
+        logger.info("User logout requested");
+        return new ResponseEntity<>("Logout successful. Please discard your token on the client.", HttpStatus.OK);
     }
 }

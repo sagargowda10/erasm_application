@@ -1,12 +1,12 @@
 package com.erasm.dto;
 
 public class UserResponse {
+
     private Integer id;
     private String email;
     private String roleName;
     private String message;
 
-    
     public Integer getId() {
         return id;
     }

@@ -33,4 +33,18 @@ public class SkillController {
     public ResponseEntity<List<Skill>> getAllSkills() {
         return new ResponseEntity<>(skillService.getAllSkills(), HttpStatus.OK);
     }
+    
+    @org.springframework.web.bind.annotation.PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Skill> updateSkill(@org.springframework.web.bind.annotation.PathVariable Integer id,
+            @RequestBody Skill skill) {
+        return new ResponseEntity<>(skillService.updateSkill(id, skill), HttpStatus.OK);
+    }
+
+    @org.springframework.web.bind.annotation.DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> deleteSkill(@org.springframework.web.bind.annotation.PathVariable Integer id) {
+        skillService.deleteSkill(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
